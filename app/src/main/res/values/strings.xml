@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NutriCalc</string>
     <string name="base_url">https://api.nal.usda.gov/fdc/v1/</string>
-    <string name="search_path">\?search</string>
-    <string name="key_param">api_key=</string>
+    <string name="search_path">search</string>
+    <string name="key_param">\?api_key=</string>
     <string name="search_param">&amp;generalSearchInput=</string>
 </resources>
