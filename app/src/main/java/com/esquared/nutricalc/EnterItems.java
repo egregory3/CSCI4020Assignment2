@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class EnterItems extends AppCompatActivity {
@@ -66,7 +64,7 @@ Button saveBtn;
         et.setHeight(150);
         et.setWidth(350);
         et.setTextSize(25);
-        et.setText("");
+        et.setText(R.string.api_key);
         et.setHint("Enter next Item");
 
         rl.addView(et);
