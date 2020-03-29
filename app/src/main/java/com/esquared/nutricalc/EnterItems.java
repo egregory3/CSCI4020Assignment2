@@ -64,7 +64,7 @@ Button saveBtn;
         et.setHeight(150);
         et.setWidth(350);
         et.setTextSize(25);
-        et.setText(R.string.api_key);
+        et.setText("");
         et.setHint("Enter next Item");
 
         rl.addView(et);
