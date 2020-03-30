@@ -53,7 +53,7 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             //pull saturated fat for food item
             JSONObject satFat = labelNutrients.getJSONObject("saturatedFat");
             String satFatAmount = satFat.getString("value");
-            Log.i("RESULT", "Saturate dfats are " + satFatAmount);
+            Log.i("RESULT", "Saturated fats are " + satFatAmount);
             GetQuantities.satFatCounts.add(Double.parseDouble(satFatAmount));
 
             //pull trans fat for food item
@@ -81,17 +81,22 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             Log.i("RESULT", "carbohydrates are " + carbohydratesAmount);
             GetQuantities.carbohydratesCounts.add(Double.parseDouble(carbohydratesAmount));
 
+            /*
             //pull fiber for food item
             JSONObject fiber = labelNutrients.getJSONObject("fiber");
             String fiberAmount = fiber.getString("value");
             Log.i("RESULT", "fiber are " + fiberAmount);
             GetQuantities.fiberCounts.add(Double.parseDouble(fiberAmount));
+            */
 
+            /*
             //pull sugar for food item
             JSONObject sugar = labelNutrients.getJSONObject("sugars");
             String sugarAmount = sugar.getString("value");
             Log.i("RESULT", "sugar are " + sugarAmount);
             GetQuantities.sugarCounts.add(Double.parseDouble(sugarAmount));
+            */
+
 
             //pull protein for food item
             JSONObject protein = labelNutrients.getJSONObject("protein");
@@ -99,23 +104,35 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             Log.i("RESULT", "protein are " + proteinAmount);
             GetQuantities.proteinCounts.add(Double.parseDouble(proteinAmount));
 
+            /*
             //pull calcium for food item
             JSONObject calcium= labelNutrients.getJSONObject("calcium");
             String calciumAmount = calcium.getString("value");
             Log.i("RESULT", "calcium are " + calciumAmount);
             GetQuantities.calciumCounts.add(Double.parseDouble(calciumAmount));
+            */
 
+           /*
             //pull iron for food item
             JSONObject iron =labelNutrients.getJSONObject("iron");
             String ironAmount = iron.getString("value");
             Log.i("RESULT", "iron are " + ironAmount);
             GetQuantities.ironCounts.add(Double.parseDouble(ironAmount));
+            */
 
             //pull calorie amount for food item
             JSONObject calories = labelNutrients.getJSONObject("calories");
             String calorieAmount = calories.getString("value");
             Log.i("RESULT", "Calories are " + calorieAmount);
             GetQuantities.calorieCounts.add(Double.parseDouble(calorieAmount));
+
+            //pull serving size for food item
+            String servingSizeUnit = JO.getString("servingSizeUnit");
+            Log.i("RESULT", "Serving size unit is " + servingSizeUnit);
+
+            //pull serving size for food item;
+            String servingSize = JO.getString("servingSize");
+            Log.i("RESULT","Serving size is " + servingSize);
 
 
         } catch (MalformedURLException e) {
