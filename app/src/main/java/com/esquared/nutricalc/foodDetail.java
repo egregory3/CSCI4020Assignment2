@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -45,39 +44,68 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             JSONObject labelNutrients = JO.getJSONObject("labelNutrients");
 
             //pull fat amount for food item
-            JSONObject fat = labelNutrients.getJSONObject("fat");
-            String fatAmount=fat.getString("value");
+            String fatAmount;
+            try {
+                JSONObject fat = labelNutrients.getJSONObject("fat");
+                fatAmount = fat.getString("value");
+            } catch (JSONException e) {
+                fatAmount = "0.0";
+            }
             Log.i("RESULT", "Fats are " + fatAmount);
             GetQuantities.fatCounts.add(Double.parseDouble(fatAmount));
 
             //pull saturated fat for food item
-            JSONObject satFat = labelNutrients.getJSONObject("saturatedFat");
-            String satFatAmount = satFat.getString("value");
+            String satFatAmount;
+            try {
+                JSONObject satFat = labelNutrients.getJSONObject("saturatedFat");
+                satFatAmount = satFat.getString("value");
+            } catch (JSONException e) {
+                satFatAmount = "0.0";
+            }
             Log.i("RESULT", "Saturated fats are " + satFatAmount);
             GetQuantities.satFatCounts.add(Double.parseDouble(satFatAmount));
 
             //pull trans fat for food item
-            JSONObject transFat = labelNutrients.getJSONObject("transFat");
-            String transFatAmount = transFat.getString("value");
+            String transFatAmount;
+            try {
+                JSONObject transFat = labelNutrients.getJSONObject("transFat");
+                transFatAmount = transFat.getString("value");
+            } catch (JSONException e) {
+                transFatAmount = "0.0";
+            }
             Log.i("RESULT", "Trans fats are " + transFatAmount);
             GetQuantities.transFatCounts.add(Double.parseDouble(transFatAmount));
 
             //pull cholesterol for food item
-            JSONObject cholesterol = labelNutrients.getJSONObject("cholesterol");
-            String cholesterolAmount = cholesterol .getString("value");
+            String cholesterolAmount;
+            try {
+                JSONObject cholesterol = labelNutrients.getJSONObject("cholesterol");
+                cholesterolAmount = cholesterol.getString("value");
+            } catch (JSONException e) {
+                cholesterolAmount = "0.0";
+            }
             Log.i("RESULT", "cholesterol are " + cholesterolAmount);
             GetQuantities.cholesterolCounts.add(Double.parseDouble(cholesterolAmount));
 
             //pull sodium for food item
-            JSONObject sodium = labelNutrients.getJSONObject("sodium");
-            String sodiumAmount = sodium.getString("value");
+            String sodiumAmount;
+            try {
+                JSONObject sodium = labelNutrients.getJSONObject("sodium");
+                sodiumAmount = sodium.getString("value");
+            } catch (JSONException e) {
+                sodiumAmount = "0.0";
+            }
             Log.i("RESULT", "sodium are " + sodiumAmount);
             GetQuantities.sodiumCounts.add(Double.parseDouble(sodiumAmount));
 
-
             //pull carbohydrates for food item
-            JSONObject carbohydrates = labelNutrients.getJSONObject("carbohydrates");
-            String carbohydratesAmount = carbohydrates.getString("value");
+            String carbohydratesAmount;
+            try {
+                JSONObject carbohydrates = labelNutrients.getJSONObject("carbohydrates");
+                carbohydratesAmount = carbohydrates.getString("value");
+            } catch (JSONException e) {
+                carbohydratesAmount = "0.0";
+            }
             Log.i("RESULT", "carbohydrates are " + carbohydratesAmount);
             GetQuantities.carbohydratesCounts.add(Double.parseDouble(carbohydratesAmount));
 
@@ -99,8 +127,13 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
 
 
             //pull protein for food item
-            JSONObject protein = labelNutrients.getJSONObject("protein");
-            String proteinAmount = protein.getString("value");
+            String proteinAmount;
+            try {
+                JSONObject protein = labelNutrients.getJSONObject("protein");
+                proteinAmount = protein.getString("value");
+            } catch (JSONException e) {
+                proteinAmount = "0.0";
+            }
             Log.i("RESULT", "protein are " + proteinAmount);
             GetQuantities.proteinCounts.add(Double.parseDouble(proteinAmount));
 
@@ -121,18 +154,27 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             */
 
             //pull calorie amount for food item
-            JSONObject calories = labelNutrients.getJSONObject("calories");
-            String calorieAmount = calories.getString("value");
+            String calorieAmount;
+            try {
+                JSONObject calories = labelNutrients.getJSONObject("calories");
+                calorieAmount = calories.getString("value");
+            } catch (JSONException e) {
+                calorieAmount = "0.0";
+            }
             Log.i("RESULT", "Calories are " + calorieAmount);
             GetQuantities.calorieCounts.add(Double.parseDouble(calorieAmount));
 
             //pull serving size for food item
             String servingSizeUnit = JO.getString("servingSizeUnit");
             Log.i("RESULT", "Serving size unit is " + servingSizeUnit);
+            GetQuantities.servingSizeUnitCounts.add(servingSizeUnit);
 
             //pull serving size for food item;
             String servingSize = JO.getString("servingSize");
             Log.i("RESULT","Serving size is " + servingSize);
+            GetQuantities.servingSizeCounts.add(Double.parseDouble(servingSize));
+
+
 
 
         } catch (MalformedURLException e) {
