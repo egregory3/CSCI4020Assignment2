@@ -4,4 +4,6 @@
     <string name="search_path">search</string>
     <string name="key_param">\?api_key=</string>
     <string name="search_param">&amp;generalSearchInput=</string>
+    <string name="nutrition_info">Nutrition Info</string>
+    <string name="total_fat">Total Fat</string>
 </resources>
