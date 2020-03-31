@@ -27,20 +27,17 @@ public class GetQuantities extends AppCompatActivity {
     public static ArrayList<Double> servingSizeCounts = new ArrayList<Double>();
 
     String api_key;
-
     @Override
     protected void onResume() {
-        calorieCounts.clear();
+        myFoods.clear();
         fdcIds.clear();
         fatCounts.clear();
         satFatCounts.clear();
         transFatCounts.clear();
         cholesterolCounts.clear();
-        cholesterolCounts.clear();
         sodiumCounts.clear();
         carbohydratesCounts.clear();
         proteinCounts.clear();
-        calorieCounts.clear();
         calorieCounts.clear();
         servingSizeUnitCounts.clear();
         servingSizeCounts.clear();
