@@ -2,6 +2,7 @@ package com.esquared.nutricalc;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -41,12 +42,12 @@ String api_key;
         Intent intent = getIntent();
 
         //get data from Intent
-        ArrayList<String> items = intent.getStringArrayListExtra("Items");
+        final ArrayList<String> items = intent.getStringArrayListExtra("Items");
 
         LinearLayout myItems = findViewById(R.id.ll_itemsDisplay);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        TextView[] tv = new TextView[items.size()];
-        EditText[] et = new EditText[items.size()];
+        final TextView[] tv = new TextView[items.size()];
+        final EditText[] et = new EditText[items.size()];
 
 
         //Create a row for each item in Items and add to TextView
@@ -87,24 +88,26 @@ String api_key;
             myItems.addView(et[i]);
 
 
-            /*
-            TextView tv = new TextView(this);
-            tv.setText("How many " + servingSizeUnitCounts.get(i)+ " do you have? ");
-            EditText et = new EditText(this);
-            et.setHeight(150);
-            et.setWidth(350);
-            et.setTextSize(25);
 
-            tv.setHeight(150);
-            tv.setWidth(350);
-            tv.setTextSize(25);
-
-            myItems.addView(tv);
-            */
         }
-        Button btn = new Button(this);
-        btn.setText("Add Up Ingredients");
-        myItems.addView(btn);
+        Button btnAddItems = findViewById(R.id.btnAddRow);
+        btnAddItems.setText("Add Ingredients");
+
+        btnAddItems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View myItems) {
+                double temp = 0;
+                double total = 0;
+
+                for (int i = 0; i < fdcIds.size(); i++) {
+                    temp = Double.parseDouble(et[i].getText().toString());
+                    total = (temp / servingSizeCounts.get(i)) * calorieCounts.get(i);
+                    tv[i].setText("There are " + String.valueOf(total) + " calories in the " + items.get(i));
+                }
+
+
+            }
+        });
 
     }
 }

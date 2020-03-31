@@ -54,10 +54,12 @@ public class foodSearch  extends AsyncTask<String, Void, Void> {
 
                     String description = onefood.get("description").toString();
                     Log.i("RESULT", "Description set " + description);
+                    GetQuantities.myFoods.add(description);
+
                     Integer fdcId = (Integer)onefood.get("fdcId");
                     Log.i("RESULT", "FDCID Set " + fdcId);
-                    GetQuantities.myFoods.add(description);
                     GetQuantities.fdcIds.add(fdcId);
+
 
                 }
             }
