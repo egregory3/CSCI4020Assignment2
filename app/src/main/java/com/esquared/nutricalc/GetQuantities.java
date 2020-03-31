@@ -13,24 +13,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class GetQuantities extends AppCompatActivity {
-public static ArrayList <String> myFoods = new ArrayList<String>();
-public static ArrayList <Integer> fdcIds = new ArrayList<Integer>();
+    public static ArrayList<String> myFoods = new ArrayList<String>();
+    public static ArrayList<Integer> fdcIds = new ArrayList<Integer>();
     public static ArrayList<Double> fatCounts = new ArrayList<Double>();
     public static ArrayList<Double> satFatCounts = new ArrayList<Double>();
     public static ArrayList<Double> transFatCounts = new ArrayList<Double>();
     public static ArrayList<Double> cholesterolCounts = new ArrayList<Double>();
     public static ArrayList<Double> sodiumCounts = new ArrayList<Double>();
     public static ArrayList<Double> carbohydratesCounts = new ArrayList<Double>();
-    //public static ArrayList <Double> fiberCounts = new ArrayList<Double>();
-//public static ArrayList <Double> sugarCounts = new ArrayList<Double>();
     public static ArrayList<Double> proteinCounts = new ArrayList<Double>();
-    //public static ArrayList <Double> calciumCounts = new ArrayList<Double>();
-//public static ArrayList <Double> ironCounts = new ArrayList<Double>();
     public static ArrayList<Double> calorieCounts = new ArrayList<Double>();
     public static ArrayList<String> servingSizeUnitCounts = new ArrayList<String>();
     public static ArrayList<Double> servingSizeCounts = new ArrayList<Double>();
 
-String api_key;
+    String api_key;
+
+    @Override
+    protected void onResume() {
+        calorieCounts.clear();
+        fdcIds.clear();
+        fatCounts.clear();
+        satFatCounts.clear();
+        transFatCounts.clear();
+        cholesterolCounts.clear();
+        cholesterolCounts.clear();
+        sodiumCounts.clear();
+        carbohydratesCounts.clear();
+        proteinCounts.clear();
+        calorieCounts.clear();
+        calorieCounts.clear();
+        servingSizeUnitCounts.clear();
+        servingSizeCounts.clear();
+
+        super.onResume();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -78,6 +95,8 @@ String api_key;
             tv[i].setTextSize(25);
             tv[i].setLayoutParams(lp);
             tv[i].setId(i);
+
+
             tv[i].setText("How many " + servingSizeUnitCounts.get(i) + " of " + items.get(i) + " do you have?");
             myItems.addView(tv[i]);
 
@@ -97,13 +116,17 @@ String api_key;
             @Override
             public void onClick(View myItems) {
                 double temp = 0;
-                double total = 0;
+                double itemCalories = 0;
+                double recipeCalorieTotal = 0;
 
                 for (int i = 0; i < fdcIds.size(); i++) {
                     temp = Double.parseDouble(et[i].getText().toString());
-                    total = (temp / servingSizeCounts.get(i)) * calorieCounts.get(i);
-                    tv[i].setText("There are " + String.valueOf(total) + " calories in the " + items.get(i));
+                    itemCalories = (temp / servingSizeCounts.get(i)) * calorieCounts.get(i);
+                    recipeCalorieTotal = recipeCalorieTotal + itemCalories;
+                    tv[i].setText("There are " + String.valueOf(itemCalories) + " calories in the " + items.get(i));
                 }
+
+                tv[1].setText("The total amount of calories is " + recipeCalorieTotal);
 
 
             }

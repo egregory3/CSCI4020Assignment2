@@ -39,13 +39,29 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
                 data = data + line;
             }
 
+            String fatAmount;
+            String satFatAmount;
+            String transFatAmount;
+            String cholesterolAmount;
+            String sodiumAmount;
+            String carbohydratesAmount;
+            String proteinAmount;
+            String calorieAmount;
+            String servingSizeUnit;
+            String servingSize;
+
 
             JSONObject JO = new JSONObject(data);
-            JSONObject labelNutrients = JO.getJSONObject("labelNutrients");
+            JSONObject labelNutrients;
+            if (JO.has("labelNutrients")) {
+                labelNutrients = JO.getJSONObject("labelNutrients");
+            } else {
+                labelNutrients = new JSONObject();
+                labelNutrients.put("Value", "No data provided");
 
+            }
 
             //pull fat amount for food item
-            String fatAmount;
             try {
                 JSONObject fat = labelNutrients.getJSONObject("fat");
                 fatAmount = fat.getString("value");
@@ -56,7 +72,6 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             GetQuantities.fatCounts.add(Double.parseDouble(fatAmount));
 
             //pull saturated fat for food item
-            String satFatAmount;
             try {
                 JSONObject satFat = labelNutrients.getJSONObject("saturatedFat");
                 satFatAmount = satFat.getString("value");
@@ -67,7 +82,6 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             GetQuantities.satFatCounts.add(Double.parseDouble(satFatAmount));
 
             //pull trans fat for food item
-            String transFatAmount;
             try {
                 JSONObject transFat = labelNutrients.getJSONObject("transFat");
                 transFatAmount = transFat.getString("value");
@@ -78,7 +92,6 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             GetQuantities.transFatCounts.add(Double.parseDouble(transFatAmount));
 
             //pull cholesterol for food item
-            String cholesterolAmount;
             try {
                 JSONObject cholesterol = labelNutrients.getJSONObject("cholesterol");
                 cholesterolAmount = cholesterol.getString("value");
@@ -89,7 +102,6 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             GetQuantities.cholesterolCounts.add(Double.parseDouble(cholesterolAmount));
 
             //pull sodium for food item
-            String sodiumAmount;
             try {
                 JSONObject sodium = labelNutrients.getJSONObject("sodium");
                 sodiumAmount = sodium.getString("value");
@@ -100,7 +112,6 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             GetQuantities.sodiumCounts.add(Double.parseDouble(sodiumAmount));
 
             //pull carbohydrates for food item
-            String carbohydratesAmount;
             try {
                 JSONObject carbohydrates = labelNutrients.getJSONObject("carbohydrates");
                 carbohydratesAmount = carbohydrates.getString("value");
@@ -110,25 +121,8 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             Log.i("RESULT", "carbohydrates are " + carbohydratesAmount);
             GetQuantities.carbohydratesCounts.add(Double.parseDouble(carbohydratesAmount));
 
-            /*
-            //pull fiber for food item
-            JSONObject fiber = labelNutrients.getJSONObject("fiber");
-            String fiberAmount = fiber.getString("value");
-            Log.i("RESULT", "fiber are " + fiberAmount);
-            GetQuantities.fiberCounts.add(Double.parseDouble(fiberAmount));
-            */
-
-            /*
-            //pull sugar for food item
-            JSONObject sugar = labelNutrients.getJSONObject("sugars");
-            String sugarAmount = sugar.getString("value");
-            Log.i("RESULT", "sugar are " + sugarAmount);
-            GetQuantities.sugarCounts.add(Double.parseDouble(sugarAmount));
-            */
-
 
             //pull protein for food item
-            String proteinAmount;
             try {
                 JSONObject protein = labelNutrients.getJSONObject("protein");
                 proteinAmount = protein.getString("value");
@@ -138,24 +132,7 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             Log.i("RESULT", "protein are " + proteinAmount);
             GetQuantities.proteinCounts.add(Double.parseDouble(proteinAmount));
 
-            /*
-            //pull calcium for food item
-            JSONObject calcium= labelNutrients.getJSONObject("calcium");
-            String calciumAmount = calcium.getString("value");
-            Log.i("RESULT", "calcium are " + calciumAmount);
-            GetQuantities.calciumCounts.add(Double.parseDouble(calciumAmount));
-            */
-
-           /*
-            //pull iron for food item
-            JSONObject iron =labelNutrients.getJSONObject("iron");
-            String ironAmount = iron.getString("value");
-            Log.i("RESULT", "iron are " + ironAmount);
-            GetQuantities.ironCounts.add(Double.parseDouble(ironAmount));
-            */
-
-            //pull calorie amount for food item
-            String calorieAmount;
+            //pull calories for food item
             try {
                 JSONObject calories = labelNutrients.getJSONObject("calories");
                 calorieAmount = calories.getString("value");
@@ -165,13 +142,21 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             Log.i("RESULT", "Calories are " + calorieAmount);
             GetQuantities.calorieCounts.add(Double.parseDouble(calorieAmount));
 
-            //pull serving size for food item
-            String servingSizeUnit = JO.getString("servingSizeUnit");
+            //pull serving size unit for food item
+            try {
+                servingSizeUnit = JO.getString("servingSizeUnit");
+            } catch (JSONException e) {
+                servingSizeUnit = "NA";
+            }
             Log.i("RESULT", "Serving size unit is " + servingSizeUnit);
             GetQuantities.servingSizeUnitCounts.add(servingSizeUnit);
 
             //pull serving size for food item;
-            String servingSize = JO.getString("servingSize");
+            try {
+                servingSize = JO.getString("servingSize");
+            } catch (JSONException e) {
+                servingSize = "0.0";
+            }
             Log.i("RESULT", "Serving size is " + servingSize);
             GetQuantities.servingSizeCounts.add(Double.parseDouble(servingSize));
 
