@@ -43,6 +43,7 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             JSONObject JO = new JSONObject(data);
             JSONObject labelNutrients = JO.getJSONObject("labelNutrients");
 
+
             //pull fat amount for food item
             String fatAmount;
             try {
@@ -171,10 +172,8 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
 
             //pull serving size for food item;
             String servingSize = JO.getString("servingSize");
-            Log.i("RESULT","Serving size is " + servingSize);
+            Log.i("RESULT", "Serving size is " + servingSize);
             GetQuantities.servingSizeCounts.add(Double.parseDouble(servingSize));
-
-
 
 
         } catch (MalformedURLException e) {
