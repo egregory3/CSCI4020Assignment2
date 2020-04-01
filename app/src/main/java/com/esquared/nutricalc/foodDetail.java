@@ -29,6 +29,7 @@ public class foodDetail extends AsyncTask<String, Void, Void> {
             builder.appendQueryParameter("api_key", params[1]);
 
             URL url = new URL(builder.toString());
+            Log.i("RESULT", url.toString());
 
             HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
             InputStream inputStream = httpsURLConnection.getInputStream();

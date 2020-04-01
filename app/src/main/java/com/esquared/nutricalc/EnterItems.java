@@ -3,6 +3,7 @@ package com.esquared.nutricalc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,10 +17,13 @@ public class EnterItems extends AppCompatActivity {
 int nextItemID = 0;
 LinearLayout rl;
 Button saveBtn;
+public static ArrayList<String> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         setContentView(R.layout.activity_enter_items);
         rl = findViewById(R.id.EnterItems);
@@ -40,7 +44,7 @@ Button saveBtn;
            @Override
            public void onClick(View v) {
                //create an array list of strings and populate items into it.
-               ArrayList<String> items = new ArrayList<>();
+
                for(int i=0; i<nextItemID; i++){
                    EditText current = findViewById(i);
                    items.add(current.getText().toString());
@@ -61,6 +65,8 @@ Button saveBtn;
 
         EditText et  = new EditText(this);
         et.setId(nextItemID);
+        et.setTextColor(this.getResources().getColor(R.color.white));
+        et.setBackgroundTintList(ColorStateList.valueOf(this.getResources().getColor(R.color.white)));
         et.setHeight(150);
         et.setWidth(350);
         et.setTextSize(25);
@@ -73,4 +79,26 @@ Button saveBtn;
 
 
     }
+
+
+    @Override
+    protected void onResume() {
+
+        items.clear();
+        GetQuantities.myFoods.clear();
+        GetQuantities.fdcIds.clear();
+        GetQuantities.fatCounts.clear();
+        GetQuantities.satFatCounts.clear();
+        GetQuantities.transFatCounts.clear();
+        GetQuantities.cholesterolCounts.clear();
+        GetQuantities.sodiumCounts.clear();
+        GetQuantities.carbohydratesCounts.clear();
+        GetQuantities.proteinCounts.clear();
+        GetQuantities.calorieCounts.clear();
+        GetQuantities.servingSizeUnitCounts.clear();
+        GetQuantities.servingSizeCounts.clear();
+
+        super.onResume();
+    }
+
 }

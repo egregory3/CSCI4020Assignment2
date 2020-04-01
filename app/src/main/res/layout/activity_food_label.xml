@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FoodLabel"
+
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,12 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <TextView
             android:id="@+id/tv_nutritionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/nutrition_info"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="25dp"
             app:layout_constraintTop_toTopOf="parent"></TextView>
 
@@ -29,7 +31,7 @@
             android:id="@+id/blackbar1"
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@android:color/black"
+            android:background="@android:color/white"
             app:layout_constraintTop_toBottomOf="@id/tv_nutritionTitle" />
 
         <LinearLayout
@@ -46,8 +48,8 @@
                 android:paddingLeft="20dp"
                 android:text="Calories"
                 android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="35dp" />
+                android:textColor="@android:color/white"
+                android:textSize="35dp" />a
 
             <TextView
                 android:id="@+id/calories_qty"
@@ -57,7 +59,7 @@
                 android:paddingRight="20dp"
                 android:text="300"
                 android:textAlignment="viewEnd"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="35dp" />
         </LinearLayout>
 
@@ -65,7 +67,7 @@
             android:id="@+id/blackbar2"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:background="@android:color/black"
+            android:background="@android:color/white"
             app:layout_constraintTop_toBottomOf="@id/calories_cell" />
 
         <LinearLayout
@@ -82,7 +84,7 @@
                 android:paddingLeft="20dp"
                 android:text="@string/total_fat"
                 android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="25dp" />
 
             <TextView
@@ -93,7 +95,7 @@
                 android:paddingRight="20dp"
                 android:text="300"
                 android:textAlignment="viewEnd"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="25dp" />
         </LinearLayout>
 
@@ -111,7 +113,7 @@
                 android:paddingLeft="40dp"
                 android:text="Saturated fat"
                 android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="15dp"
                 android:textStyle="italic" />
 
@@ -123,7 +125,7 @@
                 android:paddingRight="25dp"
                 android:text="300"
                 android:textAlignment="viewEnd"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="15dp"
                 android:textStyle="italic" />
         </LinearLayout>
@@ -140,9 +142,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".7"
                 android:paddingLeft="40dp"
-                android:text="trans fat"
+                android:text="Trans fat"
                 android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="15dp"
                 android:textStyle="italic" />
 
@@ -154,7 +156,7 @@
                 android:paddingRight="25dp"
                 android:text="300"
                 android:textAlignment="viewEnd"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="15dp"
                 android:textStyle="italic" />
         </LinearLayout>
@@ -167,7 +169,7 @@
             android:layout_height="1dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@android:color/black"
+            android:background="@android:color/white"
             app:layout_constraintTop_toBottomOf="@id/transFat_cell" />
 
         <LinearLayout
@@ -184,7 +186,7 @@
                 android:paddingLeft="20dp"
                 android:text="Sodium"
                 android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="25dp" />
 
             <TextView
@@ -194,7 +196,7 @@
                 android:paddingRight="20dp"
                 android:text="300"
                 android:textAlignment="viewEnd"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:id="@+id/sodium_qty"
                 android:textSize="25dp" />
         </LinearLayout>
@@ -205,7 +207,7 @@
             android:layout_height="1dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@android:color/black"
+            android:background="@android:color/white"
             app:layout_constraintTop_toBottomOf="@id/sodium_cell" />
 
         <LinearLayout
@@ -222,7 +224,7 @@
                 android:paddingLeft="20dp"
                 android:text="Carbohydrates"
                 android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="25dp" />
 
             <TextView
@@ -232,7 +234,7 @@
                 android:paddingRight="20dp"
                 android:text="300"
                 android:textAlignment="viewEnd"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:id="@+id/carbohydrates_qty"
                 android:textSize="25dp" />
         </LinearLayout>
@@ -243,7 +245,7 @@
             android:layout_height="1dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@android:color/black"
+            android:background="@android:color/white"
             app:layout_constraintTop_toBottomOf="@id/carbohydrates_cell" />
 
         <LinearLayout
@@ -260,7 +262,7 @@
                 android:paddingLeft="20dp"
                 android:text="Protein"
                 android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="25dp" />
 
             <TextView
@@ -270,7 +272,7 @@
                 android:paddingRight="20dp"
                 android:text="300"
                 android:textAlignment="viewEnd"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:id="@+id/protein_qty"
                 android:textSize="25dp" />
         </LinearLayout>

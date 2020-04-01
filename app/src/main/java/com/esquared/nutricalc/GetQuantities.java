@@ -1,6 +1,7 @@
 package com.esquared.nutricalc;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,24 +28,6 @@ public class GetQuantities extends AppCompatActivity {
     public static ArrayList<Double> servingSizeCounts = new ArrayList<Double>();
 
     String api_key;
-    @Override
-    protected void onResume() {
-        myFoods.clear();
-        //fdcIds.clear();
-        //fatCounts.clear();
-        //satFatCounts.clear();
-        //transFatCounts.clear();
-        //cholesterolCounts.clear();
-        //sodiumCounts.clear();
-        //carbohydratesCounts.clear();
-        //proteinCounts.clear();
-        //calorieCounts.clear();
-        //servingSizeUnitCounts.clear();
-        //servingSizeCounts.clear();
-
-        super.onResume();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -101,6 +84,8 @@ public class GetQuantities extends AppCompatActivity {
             et[i].setTextSize(25);
             et[i].setLayoutParams(lp);
             et[i].setId(i);
+            et[i].setTextColor(this.getResources().getColor(R.color.white));
+            et[i].setBackgroundTintList(ColorStateList.valueOf(this.getResources().getColor(R.color.white)));
             myItems.addView(et[i]);
 
 
@@ -138,14 +123,14 @@ public class GetQuantities extends AppCompatActivity {
                 for (int i = 0; i < fdcIds.size(); i++) {
                     temp = Double.parseDouble(et[i].getText().toString());
                     itemCalories = (temp / servingSizeCounts.get(i)) * calorieCounts.get(i);
-                    itemTotalFat = (temp/ servingSizeCounts.get(i)) + fatCounts.get(i);
-                    itemTransFat = (temp/servingSizeCounts.get(i) + transFatCounts.get(i));
-                    itemSatFat = (temp/servingSizeCounts.get(i)) + satFatCounts.get(i);
-                    itemSodium = (temp/servingSizeCounts.get(i)) + sodiumCounts.get(i);
-                    itemCarbs = (temp/servingSizeCounts.get(i)) + carbohydratesCounts.get(i);
-                    itemProtein = (temp/servingSizeCounts.get(i)) + proteinCounts.get(i);
+                    itemTotalFat = (temp/ servingSizeCounts.get(i)) * fatCounts.get(i);
+                    itemTransFat = (temp/servingSizeCounts.get(i) * transFatCounts.get(i));
+                    itemSatFat = (temp/servingSizeCounts.get(i)) * satFatCounts.get(i);
+                    itemSodium = (temp/servingSizeCounts.get(i)) * sodiumCounts.get(i);
+                    itemCarbs = (temp/servingSizeCounts.get(i)) * carbohydratesCounts.get(i);
+                    itemProtein = (temp/servingSizeCounts.get(i)) *proteinCounts.get(i);
                     recipeCalorieTotal = recipeCalorieTotal + itemCalories;
-                    RecipeFatTotal = RecipeFatTotal + itemTransFat;
+                    RecipeFatTotal = RecipeFatTotal + itemTotalFat;
                     RecipeSatFat = RecipeSatFat + itemSatFat;
                     RecipeTrFat = RecipeTrFat + itemTransFat;
                     RecipeSodium = RecipeSodium + itemSodium;
@@ -168,7 +153,7 @@ public class GetQuantities extends AppCompatActivity {
                 labelIntent.putExtra("TotalFat", labelTFat);
                 labelIntent.putExtra("TransFat", labelTrFat);
                 labelIntent.putExtra("Carbohydrates", labelCarbs);
-                labelIntent.putExtra("SaturdatedFat", labelSatFat);
+                labelIntent.putExtra("SaturatedFat", labelSatFat);
                 labelIntent.putExtra("Sodium", labelSodium);
                 labelIntent.putExtra("Protein", labelProtein);
                 startActivity(labelIntent);
