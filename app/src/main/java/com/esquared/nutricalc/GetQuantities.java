@@ -30,17 +30,17 @@ public class GetQuantities extends AppCompatActivity {
     @Override
     protected void onResume() {
         myFoods.clear();
-        fdcIds.clear();
-        fatCounts.clear();
-        satFatCounts.clear();
-        transFatCounts.clear();
-        cholesterolCounts.clear();
-        sodiumCounts.clear();
-        carbohydratesCounts.clear();
-        proteinCounts.clear();
-        calorieCounts.clear();
-        servingSizeUnitCounts.clear();
-        servingSizeCounts.clear();
+        //fdcIds.clear();
+        //fatCounts.clear();
+        //satFatCounts.clear();
+        //transFatCounts.clear();
+        //cholesterolCounts.clear();
+        //sodiumCounts.clear();
+        //carbohydratesCounts.clear();
+        //proteinCounts.clear();
+        //calorieCounts.clear();
+        //servingSizeUnitCounts.clear();
+        //servingSizeCounts.clear();
 
         super.onResume();
     }
@@ -114,16 +114,64 @@ public class GetQuantities extends AppCompatActivity {
             public void onClick(View myItems) {
                 double temp = 0;
                 double itemCalories = 0;
+                double itemTotalFat = 0;
+                double itemTransFat = 0;
+                double itemSatFat = 0;
+                double itemSodium = 0;
+                double itemCarbs = 0;
+                double itemProtein = 0;
                 double recipeCalorieTotal = 0;
+                double RecipeFatTotal =0;
+                double RecipeSatFat = 0;
+                double RecipeTrFat = 0;
+                double RecipeSodium = 0;
+                double RecipeCarbs = 0;
+                double RecipeProtein = 0;
+                Integer labelCalories = 0;
+                Integer labelTFat = 0;
+                Integer labelSatFat = 0;
+                Integer labelTrFat = 0;
+                Integer labelSodium = 0;
+                Integer labelCarbs = 0;
+                Integer labelProtein = 0;
 
                 for (int i = 0; i < fdcIds.size(); i++) {
                     temp = Double.parseDouble(et[i].getText().toString());
                     itemCalories = (temp / servingSizeCounts.get(i)) * calorieCounts.get(i);
+                    itemTotalFat = (temp/ servingSizeCounts.get(i)) + fatCounts.get(i);
+                    itemTransFat = (temp/servingSizeCounts.get(i) + transFatCounts.get(i));
+                    itemSatFat = (temp/servingSizeCounts.get(i)) + satFatCounts.get(i);
+                    itemSodium = (temp/servingSizeCounts.get(i)) + sodiumCounts.get(i);
+                    itemCarbs = (temp/servingSizeCounts.get(i)) + carbohydratesCounts.get(i);
+                    itemProtein = (temp/servingSizeCounts.get(i)) + proteinCounts.get(i);
                     recipeCalorieTotal = recipeCalorieTotal + itemCalories;
+                    RecipeFatTotal = RecipeFatTotal + itemTransFat;
+                    RecipeSatFat = RecipeSatFat + itemSatFat;
+                    RecipeTrFat = RecipeTrFat + itemTransFat;
+                    RecipeSodium = RecipeSodium + itemSodium;
+                    RecipeCarbs = RecipeCarbs + itemCarbs;
+                    RecipeProtein = RecipeProtein + itemProtein;
                     tv[i].setText("There are " + String.valueOf(itemCalories) + " calories in the " + items.get(i));
                 }
 
-                tv[1].setText("The total amount of calories is " + recipeCalorieTotal);
+                //tv[1].setText("The total amount of calories is " + recipeCalorieTotal);
+                labelCalories = (int) recipeCalorieTotal;
+                labelTrFat = (int) RecipeTrFat;
+                labelCarbs = (int) RecipeCarbs;
+                labelSatFat = (int) RecipeSatFat;
+                labelTFat = (int) RecipeFatTotal;
+                labelSodium = (int) RecipeSodium;
+                labelProtein = (int) RecipeProtein;
+
+                Intent labelIntent = new Intent(getApplicationContext(), FoodLabel.class);
+                labelIntent.putExtra("Calories", labelCalories);
+                labelIntent.putExtra("TotalFat", labelTFat);
+                labelIntent.putExtra("TransFat", labelTrFat);
+                labelIntent.putExtra("Carbohydrates", labelCarbs);
+                labelIntent.putExtra("SaturdatedFat", labelSatFat);
+                labelIntent.putExtra("Sodium", labelSodium);
+                labelIntent.putExtra("Protein", labelProtein);
+                startActivity(labelIntent);
 
 
             }
